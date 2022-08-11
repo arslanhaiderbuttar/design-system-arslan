@@ -1,8 +1,7 @@
 # Workflow trigger on any push and pull request
 name: Workflow for push and PR
 
-on:
-  [push, pull_request]
+on: [push, pull_request]
 
 defaults:
   run:

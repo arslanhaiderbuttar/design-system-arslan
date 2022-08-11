@@ -1,17 +1,28 @@
 name: Appsmith Design External Integration Test Workflow
 
 on:
+  workflow_call:
   workflow_dispatch:
   pull_request:
-    types: [opened, labeled, unlabeled, assigned, edited, reopened, synchronize, ready_for_review]
+    types:
+      [
+        opened,
+        labeled,
+        unlabeled,
+        assigned,
+        edited,
+        reopened,
+        synchronize,
+        ready_for_review,
+      ]
   repository_dispatch:
     types: [ok-to-test-command]
 
   # This workflow is only triggered by the ok to test command dispatch
   #repository_dispatch:
   # types: [ok-to-test-command]
- 
- # Change the working directory for all the jobs in this workflow
+
+  # Change the working directory for all the jobs in this workflow
 defaults:
   run:
     working-directory: packages/design-system
@@ -20,4 +31,4 @@ defaults:
 jobs:
   build-design-system:
     uses: ./.github/workflows/Lib-build-design-system.yml
-    name: build-design-system 
+    name: build-design-system
